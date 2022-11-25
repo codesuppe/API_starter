@@ -9,6 +9,8 @@ import Home from './pages/Home';
 import Users from './pages/jsonplaceholder/Users';
 import Species from './pages/jsonplaceholder/Species';
 import Starships from './pages/jsonplaceholder/Starships';
+import News from './pages/news/News';
+import NoMatch from './pages/NoMatch';
 
 function App() {
   return (
@@ -25,6 +27,11 @@ function App() {
           <Route path="/user" element={<Users />} />
           <Route path="/species" element={<Species />} />
           <Route path="/starships" element={<Starships />} />
+          <Route path="/news" element={<News />} />
+
+          <Route path="*" element={<NoMatch />} />
+
+
         </Routes>
         {/* <Footer /> */}
       </BrowserRouter>
