@@ -14,6 +14,8 @@ import NoMatch from './pages/NoMatch';
 import Hobbies from './pages/rapidapi/Hobbies';
 import Facts from './pages/rapidapi/Facts';
 import Love from './pages/rapidapi/Love';
+import Weather1 from './pages/openweather/Weather1';
+import Weather2 from './pages/openweather/Weather2';
 
 function App() {
   return (
@@ -34,6 +36,9 @@ function App() {
           <Route path="/hobby" element= { <Hobbies />} />
           <Route path="/facts" element= { <Facts />} />
           <Route path="/love" element= { <Love />} />
+          <Route path="/weather1" element= { <Weather1 />} />
+          <Route path="/weather2" element= { <Weather2 />} />
+
 
 
           <Route path="*" element={<NoMatch />} />

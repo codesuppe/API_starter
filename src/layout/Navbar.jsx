@@ -40,6 +40,13 @@ const Navbar = () => {
                         <li className="nav-item">
                             <NavLink className="nav-link" aria-current="page" to="/love">Love</NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" aria-current="page" to="/weather1">Weather</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" aria-current="page" to="/weather2">Weather2</NavLink>
+                        </li>
+                       
                        
                     </ul>
                 </div>
