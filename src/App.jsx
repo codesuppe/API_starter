@@ -11,6 +11,9 @@ import Species from './pages/jsonplaceholder/Species';
 import Starships from './pages/jsonplaceholder/Starships';
 import News from './pages/news/News';
 import NoMatch from './pages/NoMatch';
+import Hobbies from './pages/rapidapi/Hobbies';
+import Facts from './pages/rapidapi/Facts';
+import Love from './pages/rapidapi/Love';
 
 function App() {
   return (
@@ -28,6 +31,10 @@ function App() {
           <Route path="/species" element={<Species />} />
           <Route path="/starships" element={<Starships />} />
           <Route path="/news" element={<News />} />
+          <Route path="/hobby" element= { <Hobbies />} />
+          <Route path="/facts" element= { <Facts />} />
+          <Route path="/love" element= { <Love />} />
+
 
           <Route path="*" element={<NoMatch />} />
 

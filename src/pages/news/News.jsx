@@ -2,6 +2,10 @@ import React from "react";
 import Loader from "../../components/Loader";
 import Title from "../../components/Title";
 import Error from "../../components/Error";
+import {formatDistanceToNow} from 'date-fns'
+import {da} from 'date-fns/locale'
+
+
 
 import { useEffect, useState } from "react";
 import useGetData from "../../hooks/useGetData";
@@ -160,15 +164,19 @@ const News = () => {
           data.articles.map((a, i) => (
             <div className="col" key={"news" + i}>
               <div className="card h-100">
-                <img
-                  src={a.urlToImage}
-                  alt={a.title}
-                  className="card-img-top"
-                />
+
+                
+                {
+                  a.urlToImage ? <img src={a.urlToImage} alt={a.title} className="card-img-top"/> 
+                  : <img src ="https://via.placeholder.com/200x100" alt="placeholder" className="card-img-top" />
+                }
+
+
                 <div className="card-body">
                   <div className="title">
                     <h4>{a.title}</h4>
                     <p><small className="text-muted">{new Date(a.publishedAt).toLocaleString("da-dk", {year: "numeric", month:"long", day: "numeric", hour: "2-digit", minute: "2-digit"})}</small></p>
+                    <p><small className="text-muted">{formatDistanceToNow(new Date(a.publishedAt),{locale: da, addSuffix: true} ) }</small></p>
                   </div>
                   <div className="card-text">
                     <p>{a.description}</p>

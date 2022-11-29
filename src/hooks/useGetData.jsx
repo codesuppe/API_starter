@@ -11,12 +11,12 @@ const useGetData = () => {
     const [loading, setLoading] = useState(false)
     
 
-    const getData = ( url ) => {
+    const getData = ( url, headers = null, params = null ) => {
         setData()
         setLoading(true)
         
 
-        axios.get( url )
+        axios.get( url, {headers: headers, params : params} )
             .then( res => { 
                 console.log( res.data ) 
                 setData(res.data)
