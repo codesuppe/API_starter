@@ -16,6 +16,7 @@ import Facts from './pages/rapidapi/Facts';
 import Love from './pages/rapidapi/Love';
 import Weather1 from './pages/openweather/Weather1';
 import Weather2 from './pages/openweather/Weather2';
+import Weather3 from './pages/openweather/Weather3';
 
 function App() {
   return (
@@ -38,8 +39,7 @@ function App() {
           <Route path="/love" element= { <Love />} />
           <Route path="/weather1" element= { <Weather1 />} />
           <Route path="/weather2" element= { <Weather2 />} />
-
-
+          <Route path="/weather3" element= {<Weather3 />} />
 
           <Route path="*" element={<NoMatch />} />
 
