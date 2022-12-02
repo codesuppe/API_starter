@@ -46,6 +46,7 @@ const Navbar = () => {
                         <li className="nav-item">
                             <NavLink className="nav-link" aria-current="page" to="/weather2">Weather2</NavLink>
                         </li>
+<<<<<<< HEAD
 
                         <li className="nav-item">
                             <NavLink className="nav-link" aria-current="page" to="/todos">Todos</NavLink>
@@ -59,6 +60,11 @@ const Navbar = () => {
                         </li>
                        
                        
+=======
+                        <li className="nav-item">
+                            <NavLink className="nav-link" aria-current="page" to="/weather3">Weather3</NavLink>
+                        </li>
+>>>>>>> 3f8a4372002e70a80ff87c1440fa39d602653ae5
                        
                     </ul>
                 </div>
