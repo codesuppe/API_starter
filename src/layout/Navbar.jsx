@@ -46,6 +46,18 @@ const Navbar = () => {
                         <li className="nav-item">
                             <NavLink className="nav-link" aria-current="page" to="/weather2">Weather2</NavLink>
                         </li>
+
+                        <li className="nav-item">
+                            <NavLink className="nav-link" aria-current="page" to="/todos">Todos</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" aria-current="page" to="/todocreate">Createtodos</NavLink>
+                        </li>
+
+                        <li className="nav-item">
+                            <NavLink className="nav-link" aria-current="page" to="/admintodo">Admin todos</NavLink>
+                        </li>
+                       
                        
                        
                     </ul>
