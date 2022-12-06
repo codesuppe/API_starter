@@ -3,6 +3,7 @@ import Loader from "../../components/Loader";
 
 import useGetData from "../../hooks/useGetData";
 import Title from "../../components/Title";
+import ToDoCard from "./ToDoCard";
 
 const Todos = () => {
 
@@ -33,14 +34,11 @@ const Todos = () => {
                     { data &&
                     
                     data.records.map( ( t ) => 
-                        <div className="card" key={ t.id }>
-                            <div className="card-body">
-                                <h2>{t.fields.todos}</h2>
-                                <p> {new Date( t.createdTime ).toLocaleDateString("da-dk")}</p>
+                    <div className="col" key={ t.id }>
 
-                                <p>{t.fields.Notes}</p>
-                            </div>
-                        </div>
+                        <ToDoCard t={t} />
+
+                    </div>
                      )}
 
                 </div>

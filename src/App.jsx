@@ -16,13 +16,12 @@ import Facts from './pages/rapidapi/Facts';
 import Love from './pages/rapidapi/Love';
 import Weather1 from './pages/openweather/Weather1';
 import Weather2 from './pages/openweather/Weather2';
-<<<<<<< HEAD
 import Todos from './pages/airtable/Todos';
 import TodoCreate from './pages/airtable/TodoCreate';
 import TodosAdmin from './pages/airtable/TodosAdmin';
-=======
+import ToDoEdit from './pages/airtable/ToDoEdit';
+
 import Weather3 from './pages/openweather/Weather3';
->>>>>>> 3f8a4372002e70a80ff87c1440fa39d602653ae5
 
 function App() {
   return (
@@ -45,17 +44,17 @@ function App() {
           <Route path="/love" element= { <Love />} />
           <Route path="/weather1" element= { <Weather1 />} />
           <Route path="/weather2" element= { <Weather2 />} />
-<<<<<<< HEAD
+          <Route path="/weather3" element= {<Weather3 />} />
+
           <Route path="/todos" element= { <Todos />} />
           <Route path="/todocreate" element= { <TodoCreate/>} />
           <Route path="/admintodo" element= { <TodosAdmin/>} />
+          <Route path="/todoedit/:id" element= { <ToDoEdit/>} />
 
+        
 
           
-
-=======
-          <Route path="/weather3" element= {<Weather3 />} />
->>>>>>> 3f8a4372002e70a80ff87c1440fa39d602653ae5
+          
 
           <Route path="*" element={<NoMatch />} />
 

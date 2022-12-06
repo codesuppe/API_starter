@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Title from '../../components/Title';
 import usePostData, { } from "../../hooks/usePostData"
 import Error from '../../components/Error';
@@ -10,7 +10,11 @@ const TodoCreate = () => {
     const { error, loading, data, postData } = usePostData()
 
     //state til det nye todo
-    const [ newtodo, setNewtodo ] = useState();
+    const [ newtodo, setNewtodo ] = useState("");
+
+    useEffect( () => {
+        if(data) setNewtodo("")
+        }, [data] )
 
     //handlesubmit funktion - send data til api
     const handleSubmit = ( e ) => {
@@ -48,7 +52,7 @@ const TodoCreate = () => {
 
                     <form onSubmit={ handleSubmit }>
                         <label className='form-label me-3'>Indtast en todo: 
-                            <input type="text" onInput={ ( e ) => setNewtodo( e.target.value ) } id="input" className='form-control' />
+                            <input type="text" onInput={ ( e ) => setNewtodo( e.target.value ) } id="input" value={newtodo} className='form-control' />
                         </label>
                         <button type="submit" className='btn btn-primary'>Opret ny todo</button>
                     </form>
