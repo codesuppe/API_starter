@@ -18,7 +18,7 @@ const useGetData = () => {
 
         axios.get( url, {headers: headers, params : params} )
             .then( res => { 
-                console.log( res.data ) 
+                 
                 setData(res.data)
                 setError(false)
             } )

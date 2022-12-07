@@ -24,6 +24,8 @@ import ToDoEdit from './pages/airtable/ToDoEdit';
 //boardgames
 import Boardgames from './pages/boardgames/Boardgames';
 import BoardgameCreate from './pages/boardgames/BoardgameCreate';
+import BoardgameAdmin from './pages/boardgames/BoardgameAdmin';
+import BoardgameEdit from './pages/boardgames/BoardgameEdit';
 
 import Weather3 from './pages/openweather/Weather3';
 
@@ -57,11 +59,9 @@ function App() {
 
           <Route path="/boardgames" element= { <Boardgames />} />
           <Route path="/boardgamesCreate" element= { <BoardgameCreate />} />
+          <Route path="/boardgamesAdmin" element= { <BoardgameAdmin />} />
+          <Route path="/boardgameEdit" element= { <BoardgameEdit />} />
 
-        
-
-          
-          
 
           <Route path="*" element={<NoMatch />} />
 

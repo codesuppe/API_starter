@@ -21,7 +21,7 @@ const TodosAdmin = () => {
   } = useDeleteData();
 
   useEffect(() => {
-    getData("https://api.airtable.com/v0/apphV6YZoJVKEG2Xu/TodoTable", {
+    getData("https://api.airtable.com/v0/appelw4DFg7HS9Tky/boardgametable", {
       Authorization: "Bearer " + process.env.REACT_APP_AIRTABLEKEY,
     });
   }, [datadelete]); // abonnerer på ændringer i datadelete-state (fra delete hook) og henter nye data ved ændringer
@@ -33,7 +33,7 @@ const TodosAdmin = () => {
 
     if (window.confirm("Er du sikker på at slette?")) {
       deleteData(
-        "https://api.airtable.com/v0/apphV6YZoJVKEG2Xu/TodoTable/" + id,
+        "https://api.airtable.com/v0/appelw4DFg7HS9Tky/boardgametable/" + id,
         { Authorization: "Bearer " + process.env.REACT_APP_AIRTABLEKEY }
       );
     }
@@ -56,10 +56,8 @@ const TodosAdmin = () => {
               <div className="card" key={t.id}>
                
                 <div className="card-body">
-                  <h2>{t.fields.todos}</h2>
-                  <p> {new Date(t.createdTime).toLocaleDateString("da-dk")}</p>
-
-                  <p>{t.fields.Notes}</p>
+                  <h2>{t.fields.name}</h2>
+                
                   <p>{t.fields.categoryname}</p>
                 </div>
                 <div className="card-footer">
@@ -72,7 +70,7 @@ const TodosAdmin = () => {
                     </button>
                   </Link>
 
-                  <Link to={"/todoedit/" + t.id}>
+                  <Link to={"/boardgameEdit/" + t.id}>
                     <button className="btn btn-warning">
                       RET <AiOutlineEdit />
                     </button>

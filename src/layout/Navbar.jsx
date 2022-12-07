@@ -176,13 +176,13 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/admintodo">
+                  <NavLink className="dropdown-item" to="/boardgamesAdmin">
                     Admin Boardgame
                   </NavLink>
                 </li>
 
                 <li>
-                  <NavLink className="dropdown-item" to="/todoedit">
+                  <NavLink className="dropdown-item" to="/boardgameEdit">
                     Edit Boardgame
                   </NavLink>
                 </li>
