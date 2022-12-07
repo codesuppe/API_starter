@@ -113,34 +113,85 @@ const Navbar = () => {
               </ul>
             </li>
 
-            
-
-            <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" to="/todos">
-                Todos
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                aria-current="page"
-                to="/todocreate"
+            <li className="nav-item dropdown">
+              <span
+                className="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
               >
-                Createtodos
-              </NavLink>
+                Todos
+                </span>
+              <ul className="dropdown-menu">
+                <li className="nav-item">
+                  <NavLink
+                    className="dropdown-item"
+                    aria-current="page"
+                    to="/todos"
+                  >
+                    Todos
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/todocreate">
+                    Create Todo
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/admintodo">
+                    Admin todos
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink className="dropdown-item" to="/todoedit">
+                    todos edit
+                  </NavLink>
+                </li>
+
+              </ul>
+
             </li>
 
-            <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" to="/admintodo">
-                Admin todos
-              </NavLink>
+
+
+            <li className="nav-item dropdown">
+              <span
+                className="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+              >
+                Boardgames
+                </span>
+              <ul className="dropdown-menu">
+                <li className="nav-item">
+                  <NavLink
+                    className="dropdown-item"
+                    aria-current="page"
+                    to="/boardgames"
+                  >
+                    Boardgames
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/boardgamesCreate">
+                    Create Boardgame
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/admintodo">
+                    Admin Boardgame
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink className="dropdown-item" to="/todoedit">
+                    Edit Boardgame
+                  </NavLink>
+                </li>
+
+              </ul>
+
             </li>
 
-            <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" to="/todoedit">
-                todos edit
-              </NavLink>
-            </li>
+
           </ul>
         </div>
       </div>

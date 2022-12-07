@@ -21,6 +21,10 @@ import TodoCreate from './pages/airtable/TodoCreate';
 import TodosAdmin from './pages/airtable/TodosAdmin';
 import ToDoEdit from './pages/airtable/ToDoEdit';
 
+//boardgames
+import Boardgames from './pages/boardgames/Boardgames';
+import BoardgameCreate from './pages/boardgames/BoardgameCreate';
+
 import Weather3 from './pages/openweather/Weather3';
 
 function App() {
@@ -50,6 +54,9 @@ function App() {
           <Route path="/todocreate" element= { <TodoCreate/>} />
           <Route path="/admintodo" element= { <TodosAdmin/>} />
           <Route path="/todoedit/:id" element= { <ToDoEdit/>} />
+
+          <Route path="/boardgames" element= { <Boardgames />} />
+          <Route path="/boardgamesCreate" element= { <BoardgameCreate />} />
 
         
 

@@ -5,26 +5,26 @@ import useGetData from '../../hooks/useGetData';
 import Error from '../../components/Error';
 import Loader from '../../components/Loader';
 
-const TodoCreate = () => {
+const BoardgameCreate = () => {
 
     //hook opener til postdata
     const { error, loading, data, postData } = usePostData()
     const { error: errorCategory, loading: loadingCategory, data: dataCategory, getData } = useGetData();
 
     //state til det nye todo
-    const [ newtodo, setNewtodo ] = useState( "" );
+    const [ newBoardgame, setnewBoardgame ] = useState( "" );
     const [ category, setCategory ] = useState();
 
 
     useEffect( () => {
-        getData( "https://api.airtable.com/v0/apphV6YZoJVKEG2Xu/Categories",
+        getData( "https://api.airtable.com/v0/appelw4DFg7HS9Tky/categorytable",
             {
                 Authorization: "Bearer " + process.env.REACT_APP_AIRTABLEKEY,
             } );
     }, [] );
 
     useEffect( () => {
-        if ( data ) setNewtodo( "" )
+        if ( data ) setnewBoardgame( "" )
     }, [ data ] )
 
 
@@ -36,12 +36,12 @@ const TodoCreate = () => {
 
         let nyPost = {
             "fields": {
-                "todos": newtodo,
-                "Categories": [ category ]
+                "name": newBoardgame,
+                "category": [ category ]
             }
         }
 
-        postData( "https://api.airtable.com/v0/apphV6YZoJVKEG2Xu/TodoTable", nyPost,
+        postData( "https://api.airtable.com/v0/appelw4DFg7HS9Tky/boardgametable", nyPost,
             {
                 "Authorization": "Bearer " + process.env.REACT_APP_AIRTABLEKEY,
                 "Content-Type": "application/json"
@@ -50,14 +50,14 @@ const TodoCreate = () => {
     }
 
     return (
-        <div className='TodoCreate container'>
+        <div className='BoardgameCreate container'>
 
             <Title />
 
             { error && <Error /> }
             { loading && <Loader /> }
 
-            { data && <h2>Din todo er nu oprettet med id: { data.id }</h2> }
+            { data && <h2>Dit brætspil er nu oprettet med id: { data.id }</h2> }
 
             <div className='row'>
 
@@ -65,8 +65,8 @@ const TodoCreate = () => {
 
                     <form onSubmit={ handleSubmit }>
                         <div className='mb-3 mt-3'>
-                            <label className='form-label me-3'>Indtast en todo:
-                                <input type="text" onInput={ ( e ) => setNewtodo( e.target.value ) } id="input" value={ newtodo } className='form-control' />
+                            <label className='form-label me-3'>Skriv navnet på dit brætspil:
+                                <input type="text" onInput={ ( e ) => setnewBoardgame( e.target.value ) } id="input" value={ newBoardgame } className='form-control' />
                             </label>
                         </div>
 
@@ -81,7 +81,7 @@ const TodoCreate = () => {
 
                                         dataCategory.records.map( c =>
 
-                                            <option value={ c.id } key={ c.id }>{ c.fields.Name }</option>
+                                            <option value={ c.id } key={ c.id }>{ c.fields.categoryname }</option>
 
                                         )
 
@@ -93,7 +93,7 @@ const TodoCreate = () => {
 
                         </div>
 
-                        <button type="submit" className='btn btn-primary'>Opret ny todo</button>
+                        <button type="submit" className='btn btn-primary'>Tilføj nyt brætspil</button>
                     </form>
 
                 </div>
@@ -105,4 +105,4 @@ const TodoCreate = () => {
     )
 }
 
-export default TodoCreate
+export default BoardgameCreate

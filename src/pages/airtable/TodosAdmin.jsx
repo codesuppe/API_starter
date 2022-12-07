@@ -58,6 +58,7 @@ const TodosAdmin = () => {
                   <p> {new Date(t.createdTime).toLocaleDateString("da-dk")}</p>
 
                   <p>{t.fields.Notes}</p>
+                  <p>{t.fields.categoryname}</p>
                 </div>
                 <div className="card-footer">
                   <Link >
