@@ -8,6 +8,7 @@ import usePatchData from "../../hooks/usePatchData";
 
 const ToDoEdit = () => {
   const { id } = useParams();
+  
   const navigate = useNavigate(); // så brugeren kan redirectes retur til adminsiden efter rettelse
 
   const { error, loading, data, getData } = useGetData();
@@ -24,7 +25,6 @@ const ToDoEdit = () => {
 
   useEffect( () => {
     //kategorier, så man kan hente en anden kategori
-
       getDataCategories( "https://api.airtable.com/v0/apphV6YZoJVKEG2Xu/Categories/", {
         "Authorization": "Bearer " + process.env.REACT_APP_AIRTABLEKEY     
       } )
@@ -44,9 +44,9 @@ const ToDoEdit = () => {
   }, [ dataPatch ] );
   
   const handleSubmit = ( e ) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    let t = {
+    let rettet = {
       "fields": {
           "todos": updatedTodo,
           "Categories": [ updatedCategory ]
@@ -55,12 +55,11 @@ const ToDoEdit = () => {
 
     patchData(
       "https://api.airtable.com/v0/apphV6YZoJVKEG2Xu/TodoTable/" + id,
-      t,
+      
       {
         "Authorization": "Bearer " + process.env.REACT_APP_AIRTABLEKEY,
         "Content-Type": "application/json",
-      }
-    );
+      }, null, rettet );
   }
 
   return (
@@ -77,7 +76,7 @@ const ToDoEdit = () => {
             <input
               type="text"
               defaultValue={ data.fields.todos }
-              onInput={ ( e ) => setUpdatedTodo( e.target.value ) }
+              onChange={ ( e ) => setUpdatedTodo( e.target.value ) }
               className="form-control"
             />
           </label>
@@ -87,7 +86,7 @@ const ToDoEdit = () => {
             <label className='form-label me-3'>
               Vælg en kategori
 
-              <select defaultValue={data.fields.Categories[0]} onChange={ e => setUpdatedCategory( e.target.value ) } className='form-select'>
+              <select defaultValue={data.fields.Categories[0]} onInput={ e => setUpdatedCategory( e.target.value ) } className='form-select'>
 
                 { dataCategories &&
 

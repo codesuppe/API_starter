@@ -12,9 +12,9 @@ const useDeleteData = () => {
     
 
     const deleteData = ( url, headers = null, params = null ) => {
-        setData()
+
         setLoading(true)
-        
+        setData()
 
         axios.delete( url, {headers: headers, params : params} )
             .then( res => { 
@@ -22,8 +22,8 @@ const useDeleteData = () => {
                 setData(res.data)
                 setError(false)
             } )
-            .catch( err => {
-                console.log( "error" )
+            .catch( error => {
+                console.log( "error", error )
                 setError(true)
                 setData()
             })

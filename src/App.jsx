@@ -60,7 +60,7 @@ function App() {
           <Route path="/boardgames" element= { <Boardgames />} />
           <Route path="/boardgamesCreate" element= { <BoardgameCreate />} />
           <Route path="/boardgamesAdmin" element= { <BoardgameAdmin />} />
-          <Route path="/boardgameEdit" element= { <BoardgameEdit />} />
+          <Route path="/boardgameEdit/:id" element= { <BoardgameEdit />} />
 
 
           <Route path="*" element={<NoMatch />} />

@@ -63,7 +63,7 @@ const TodosAdmin = () => {
                 <div className="card-footer">
                   <Link>
                     <button 
-                      onClick={handleDelete}                     
+                      onClick={() => handleDelete ( t.id )}                     
                       className="btn btn-secondary btn-danger me-2"
                     >
                       SLET <AiOutlineDelete />
