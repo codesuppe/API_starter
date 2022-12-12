@@ -31,7 +31,7 @@ const TodosAdmin = () => {
   const handleDelete = (id) => {
     console.log(id);
 
-    if (window.confirm("Er du sikker på at slette?")) {
+    if (window.confirm("Er du sikker på at du vil slette?")) {
       deleteData(
         "https://api.airtable.com/v0/appelw4DFg7HS9Tky/boardgametable/" + id,
         { Authorization: "Bearer " + process.env.REACT_APP_AIRTABLEKEY }
@@ -40,12 +40,12 @@ const TodosAdmin = () => {
   };
 
   return (
-    <div className="Todos container">
+    <div className="boardgame container">
       <div>
-        <Title headline="Admin todois" />
+        <Title headline="Administér brætspil" />
 
         {/* Eroor */}
-        {(error || errordelete) && <h4>Ingen Todos</h4>}
+        {(error || errordelete) && <Error  />}
 
         {/* Loading */}
         {(loading || loadingdelete) && <Loader />}

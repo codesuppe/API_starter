@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+
 import Title from "../../components/Title";
 import Error from "../../components/Error";
-import { useParams, useNavigate } from "react-router-dom";
-import useGetData from "../../hooks/useGetData";
 import Loader from "../../components/Loader";
+
+import useGetData from "../../hooks/useGetData";
 import usePatchData from "../../hooks/usePatchData";
 
 const ToDoEdit = () => {
@@ -25,16 +27,21 @@ const ToDoEdit = () => {
 
   useEffect( () => {
     //kategorier, så man kan hente en anden kategori
-      getDataCategories( "https://api.airtable.com/v0/apphV6YZoJVKEG2Xu/Categories/", {
+      getDataCategories( "https://api.airtable.com/v0/apphV6YZoJVKEG2Xu/Categories", {
+
         "Authorization": "Bearer " + process.env.REACT_APP_AIRTABLEKEY     
+
       } )
 
     //todo'en der skal rettes
     getData( "https://api.airtable.com/v0/apphV6YZoJVKEG2Xu/TodoTable/" + id, {
+
       "Authorization": "Bearer " + process.env.REACT_APP_AIRTABLEKEY,
       "Content-Type": "application/json",
+
     } );
   }, [] );
+
 
   useEffect( () => {
     //hvis der er data fra patch-requestet = færdig med at rette
@@ -46,20 +53,23 @@ const ToDoEdit = () => {
   const handleSubmit = ( e ) => {
     e.preventDefault()
 
+    let tododefault = updatedTodo ? updatedTodo : data.fields.todos
+    let todocategorydefault = updatedCategory ? updatedCategory : data.fields.Categories[0]
+
     let rettet = {
       "fields": {
-          "todos": updatedTodo,
-          "Categories": [ updatedCategory ]
+          "todos": tododefault,
+          "Categories": [ todocategorydefault ]
       }
   }
 
     patchData(
-      "https://api.airtable.com/v0/apphV6YZoJVKEG2Xu/TodoTable/" + id,
+      "https://api.airtable.com/v0/apphV6YZoJVKEG2Xu/TodoTable/" + id, rettet,
       
       {
         "Authorization": "Bearer " + process.env.REACT_APP_AIRTABLEKEY,
         "Content-Type": "application/json",
-      }, null, rettet );
+      }, null );
   }
 
   return (

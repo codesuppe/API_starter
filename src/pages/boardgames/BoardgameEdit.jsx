@@ -6,8 +6,8 @@ import useGetData from "../../hooks/useGetData";
 import Loader from "../../components/Loader";
 import usePatchData from "../../hooks/usePatchData";
 
-const ToDoEdit = () => {
-  const { id } = useParams();
+const BoardgameEdit = () => {
+  const { idd } = useParams();
   const navigate = useNavigate(); // så brugeren kan redirectes retur til adminsiden efter rettelse
 
   const { error, loading, data, getData } = useGetData();
@@ -16,7 +16,7 @@ const ToDoEdit = () => {
   const {error: errorPatch, loading: loadingPatch, data: dataPatch, patchData } = usePatchData();
 
   //state til at rumme rettet todo
-  const [ updatedTodo, setUpdatedTodo ] = useState();
+  const [ updatedBoardgame, setupdatedBoardgame ] = useState();
   const [ updatedCategory, setUpdatedCategory ] = useState();
 
 
@@ -30,7 +30,7 @@ const ToDoEdit = () => {
       } )
 
     //todo'en der skal rettes
-    getData( "https://api.airtable.com/v0/appelw4DFg7HS9Tky/boardgametable/" + id, {
+    getData( "https://api.airtable.com/v0/appelw4DFg7HS9Tky/boardgametable/" + idd, {
       "Authorization": "Bearer " + process.env.REACT_APP_AIRTABLEKEY,
       "Content-Type": "application/json",
     } );
@@ -46,26 +46,29 @@ const ToDoEdit = () => {
   const handleSubmit = ( e ) => {
     e.preventDefault();
 
-    let t = {
+    let boardgamedefault = updatedBoardgame ? updatedBoardgame : data.fields.name
+    let boardgamecategorydefault = updatedCategory ? updatedCategory : data.fields.categoryname[0]
+
+    let rettet = {
       "fields": {
-          "name": updatedTodo,
-          "category": [ updatedCategory ]
+          "name": boardgamedefault,
+          "category": [ boardgamecategorydefault ]
       }
   }
 
     patchData(
-      "https://api.airtable.com/v0/apphV6YZoJVKEG2Xu/TodoTable/" + id,
-      t,
+      "https://api.airtable.com/v0/appelw4DFg7HS9Tky/boardgametable/" + idd, rettet,
+     
       {
         "Authorization": "Bearer " + process.env.REACT_APP_AIRTABLEKEY,
         "Content-Type": "application/json",
-      }
+      }, null
     );
   }
 
   return (
     <div className="container">
-      <Title headline="Ret udvalgt todo" />
+      <Title headline="Ret i et brætspil" />
 
       { loading || ( loadingPatch && <Loader /> ) }
       { error || ( errorPatch && <Error /> ) }
@@ -73,11 +76,11 @@ const ToDoEdit = () => {
       { data && (
         <form onSubmit={ handleSubmit }>
           <label className="form-label me-3">
-            ret todo:
+            Ret brætspil:
             <input
               type="text"
               defaultValue={ data.fields.name }
-              onInput={ ( e ) => setUpdatedTodo( e.target.value ) }
+              onInput={ ( e ) => setupdatedBoardgame( e.target.value ) }
               className="form-control"
             />
           </label>
@@ -114,4 +117,4 @@ const ToDoEdit = () => {
   );
 };
 
-export default ToDoEdit;
+export default BoardgameEdit;
